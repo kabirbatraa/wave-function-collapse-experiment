@@ -3,6 +3,9 @@ let newTile;
 
 let tileGrid;
 
+let row = 0;
+let col = 0;
+
 function setup() {
   createCanvas(windowWidth, windowHeight);
   noStroke();
@@ -11,7 +14,7 @@ function setup() {
   tileGrid = [];
   for (let i = 0; i < width/tileWidth; i++) {
     tileGrid.push([]);
-    for (let j = 0; j < width/tileWidth; j++) {
+    for (let j = 0; j < height/tileWidth; j++) {
       // let remainingPositions = [0, 1, 2, 3];
 
       // let newTileType = floor(random(2));
@@ -53,19 +56,33 @@ function setup() {
       //   }
       // }
       // // tileGrid[i].push(new TileT(0, i*tileWidth, j*tileWidth));
-      tileGrid[i].push(generateNewTile(i, j));
+      // tileGrid[i].push(generateNewTile(i, j));
+      tileGrid[i].push(false);
     }
   }
 }
 
 function draw() {
   background("black");
-  // newTile.draw();
+
+  if (col < tileGrid.length) {
+    if (row < tileGrid[col].length) {
+      tileGrid[col][row] = generateNewTile(col, row);
+      row++;
+    }
+    else {
+      row = 0;
+      col++;
+    }
+  }
+
   for (let i = 0; i < width/tileWidth; i++) {
     // tileGrid.push([]);
-    for (let j = 0; j < width/tileWidth; j++) {
+    for (let j = 0; j < height/tileWidth; j++) {
       // tileGrid[i].push(new Tile(floor(random(0, 4)), i*tileWidth, j*tileWidth));
-      tileGrid[i][j].draw();
+      if (tileGrid[i][j] != false) {
+        tileGrid[i][j].draw();
+      }
     }
   }
 }
@@ -75,7 +92,7 @@ function generateNewTile(i, j) {
   let remainingPositions = [0, 1, 2, 3];
 
   let newTileType = floor(random(2));
-  newTileType = 0;
+  // newTileType = 0;
 
   if (i > 0) {
     remainingPositions = remainingPositions.filter((value) => {
