@@ -35,5 +35,14 @@ class TileT {
     }
   }
 
+  // if there is a path from the right, then any tile except rotation = 1 is allowed
+  static rightAllowedFilter(value) {
+    return value != 1;
+  }
+
+  static downAllowedFilter(value) {
+    return value != 2;
+  }
+
 
 }

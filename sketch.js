@@ -14,25 +14,19 @@ function setup() {
     for (let j = 0; j < width/tileWidth; j++) {
       let remainingPositions = [0, 1, 2, 3];
       if (i > 0) {
-        // if (!tileGrid[i-1][j].rightAllowed()) {
-        //   remainingPositions = remainingPositions.filter((value) => (value == 1 || value == 2));
-        // }
-        // else {
-        //   remainingPositions = remainingPositions.filter((value) => (value == 0 || value == 3));
-        // }
         if (tileGrid[i-1][j].rightAllowed()) {
-          remainingPositions = remainingPositions.filter((value) => value != 1);
+          remainingPositions = remainingPositions.filter((value) => TileT.rightAllowedFilter(value));
         }
         else {
-          remainingPositions = remainingPositions.filter((value) => value == 1);
+          remainingPositions = remainingPositions.filter((value) => !TileT.rightAllowedFilter(value));
         }
       }
       if (j > 0) {
         if (tileGrid[i][j-1].downAllowed()) {
-          remainingPositions = remainingPositions.filter((value) => value != 2);
+          remainingPositions = remainingPositions.filter((value) => TileT.downAllowedFilter(value));
         }
         else {
-          remainingPositions = remainingPositions.filter((value) => value == 2);
+          remainingPositions = remainingPositions.filter((value) => !TileT.downAllowedFilter(value));
         }
       }
       if (remainingPositions.length == 0) {
