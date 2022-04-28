@@ -11,7 +11,7 @@ class TileL {
     rotate(this.rotation * PI/2);
     translate(-tileWidth/2, -tileWidth/2);
     // rect(0,0,tileWidth,tileWidth);
-    fill("white");
+    fill("pink");
     rect(0, tileWidth/3, 2*tileWidth/3, tileWidth/3);
     rect(tileWidth/3, 0, tileWidth/3, 2*tileWidth/3);
     pop();
