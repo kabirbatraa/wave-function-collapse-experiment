@@ -11,7 +11,7 @@ class TileL {
     rotate(this.rotation * PI/2);
     translate(-tileWidth/2, -tileWidth/2);
     // rect(0,0,tileWidth,tileWidth);
-    // fill("green");
+    fill("white");
     rect(0, tileWidth/3, 2*tileWidth/3, tileWidth/3);
     rect(tileWidth/3, 0, tileWidth/3, 2*tileWidth/3);
     pop();
@@ -35,5 +35,13 @@ class TileL {
     }
   }
 
+  // if there is a path from the right, then rotation = 0 and 3 are allowed
+  static rightAllowedFilter(value) {
+    return value == 0 || value == 3;
+  }
+
+  static downAllowedFilter(value) {
+    return value == 0 || value == 1;
+  }
 
 }

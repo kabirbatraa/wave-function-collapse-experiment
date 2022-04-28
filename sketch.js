@@ -1,4 +1,4 @@
-let tileWidth = 50;
+let tileWidth = 10;
 let newTile;
 
 let tileGrid;
@@ -13,27 +13,44 @@ function setup() {
     tileGrid.push([]);
     for (let j = 0; j < width/tileWidth; j++) {
       let remainingPositions = [0, 1, 2, 3];
+
+      let newTileType = floor(random(2));
+      // newTileType = 0;
+
       if (i > 0) {
-        if (tileGrid[i-1][j].rightAllowed()) {
-          remainingPositions = remainingPositions.filter((value) => TileT.rightAllowedFilter(value));
-        }
-        else {
-          remainingPositions = remainingPositions.filter((value) => !TileT.rightAllowedFilter(value));
-        }
+        remainingPositions = remainingPositions.filter((value) => {
+          if (newTileType == 0) {
+            return !(tileGrid[i-1][j].rightAllowed() ^ TileT.rightAllowedFilter(value));
+            // return tileGrid[i-1][j].rightAllowed() ? TileT.rightAllowedFilter(value) : !TileT.rightAllowedFilter(value);
+          }
+          else {
+            return !(tileGrid[i-1][j].rightAllowed() ^ TileL.rightAllowedFilter(value));
+          }
+          
+        });
       }
       if (j > 0) {
-        if (tileGrid[i][j-1].downAllowed()) {
-          remainingPositions = remainingPositions.filter((value) => TileT.downAllowedFilter(value));
-        }
-        else {
-          remainingPositions = remainingPositions.filter((value) => !TileT.downAllowedFilter(value));
-        }
+        remainingPositions = remainingPositions.filter((value) => {
+          if (newTileType == 0) {
+            return !(tileGrid[i][j-1].downAllowed() ^ TileT.downAllowedFilter(value));
+            // return tileGrid[i-1][j].rightAllowed() ? TileT.rightAllowedFilter(value) : !TileT.rightAllowedFilter(value);
+          }
+          else {
+            return !(tileGrid[i][j-1].downAllowed() ^ TileL.downAllowedFilter(value));
+          }
+          
+        });
       }
       if (remainingPositions.length == 0) {
         tileGrid[i].push(new TileBlank(i*tileWidth, j*tileWidth));
       }
       else {
-        tileGrid[i].push(new TileT(remainingPositions[floor(random(0, remainingPositions.length))], i*tileWidth, j*tileWidth));
+        if (newTileType == 0) {
+          tileGrid[i].push(new TileT(remainingPositions[floor(random(0, remainingPositions.length))], i*tileWidth, j*tileWidth));
+        }
+        else {
+          tileGrid[i].push(new TileL(remainingPositions[floor(random(0, remainingPositions.length))], i*tileWidth, j*tileWidth));
+        }
       }
       // tileGrid[i].push(new TileT(0, i*tileWidth, j*tileWidth));
     }
