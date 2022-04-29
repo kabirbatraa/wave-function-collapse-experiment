@@ -20,7 +20,7 @@ let queue = [];
 function setup() {
   createCanvas(windowWidth, windowHeight);
 
-  randomSeed(0);
+  // randomSeed(0);
 
   noStroke();
   fill(0);
@@ -36,8 +36,10 @@ function setup() {
     }
   }
 
-  let col = floor(tileGrid.length / 2);
-  let row = floor(tileGrid[0].length / 2);
+  // let col = floor(tileGrid.length / 2);
+  let col = floor(random(tileGrid.length));
+  // let row = floor(tileGrid[0].length / 2);
+  let row = floor(random(tileGrid[0].length));
   queue.push([col, row]);
 }
 
