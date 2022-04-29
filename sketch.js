@@ -2,16 +2,20 @@ let tileWidth = 50;
 let newTile;
 
 let tileGrid;
+let alreadyQueued;
 
-let row = 0;
-let col = 0;
+// let row = 0;
+// let col = 0;
 
 let right = 0;
 let down = 1;
 let left = 2;
 let up = 3;
 
-let opposites = 2;
+let dx = [1, 0, -1, 0];
+let dy = [0, 1, 0, -1];
+
+let queue = [];
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -22,33 +26,57 @@ function setup() {
   fill(0);
 
   tileGrid = [];
+  alreadyQueued = [];
   for (let i = 0; i < width/tileWidth; i++) {
     tileGrid.push([]);
+    alreadyQueued.push([]);
     for (let j = 0; j < height/tileWidth; j++) {
       tileGrid[i].push(false);
+      alreadyQueued[i].push(false);
     }
   }
 
-  // col = tileGrid.length - 1;
-  // row = tileGrid[0].length - 1;
+  let col = floor(tileGrid.length / 2);
+  let row = floor(tileGrid[0].length / 2);
+  queue.push([col, row]);
 }
 
 function draw() {
   background("black");
-
-  while (true) {
-    if (col < tileGrid.length) {
-      if (row < tileGrid[col].length) {
-        tileGrid[col][row] = generateNewTile(col, row);
-        row++;
-        break;
-      }
-      else {
-        row = 0;
-        col++;
+  
+  if (queue.length > 0) {
+    // pair = queue.splice(floor(random(queue.length)), 1);
+    pair = queue.splice(0, 1);
+    [col, row] = pair[0]; // splice returns an array of elements
+    
+    tileGrid[col][row] = generateNewTile(col, row);
+    for (let i = 0; i < 4; i++) {
+      if (0 <= col+dx[i] && col+dx[i] < tileGrid.length
+      && 0 <= row+dy[i] && row+dy[i] < tileGrid[0].length
+      && tileGrid[col+dx[i]][row+dy[i]] == false
+      && alreadyQueued[col+dx[i]][row+dy[i]] != true) {
+        // fill("red");
+        // rect((col+dx[i])*tileWidth, (row+dy[i])*tileWidth, tileWidth, tileWidth);
+        // tileGrid[col+dx[i]][row+dy[i]] = true
+        alreadyQueued[col+dx[i]][row+dy[i]] = true;
+        queue.push([col+dx[i], row+dy[i]]);
       }
     }
   }
+
+  // while (true) {
+  //   if (col < tileGrid.length) {
+  //     if (row < tileGrid[col].length) {
+  //       tileGrid[col][row] = generateNewTile(col, row);
+  //       row++;
+  //       break;
+  //     }
+  //     else {
+  //       row = 0;
+  //       col++;
+  //     }
+  //   }
+  // }
 
   
   // if (col >= 0) {
