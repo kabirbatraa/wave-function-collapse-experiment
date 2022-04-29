@@ -1,4 +1,12 @@
 class TileL {
+
+  static rotationToPaths = [
+    [left, up],
+    [up, right],
+    [right, down],
+    [down, left]
+  ];
+
   constructor(rotation, x, y) {
     this.rotation = rotation;
     this.x = x;
@@ -17,31 +25,35 @@ class TileL {
     pop();
   }
 
-  rightAllowed() {
-    if (this.rotation == 0 || this.rotation == 3) {
-      return false;
-    }
-    else if (this.rotation == 1 || this.rotation == 2) {
-      return true;
-    }
+  getPaths() {
+    return TileL.rotationToPaths[this.rotation];
   }
 
-  downAllowed() {
-    if (this.rotation == 0 || this.rotation == 1) {
-      return false;
-    }
-    else if (this.rotation == 2 || this.rotation == 3) {
-      return true;
-    }
-  }
+  // rightAllowed() {
+  //   if (this.rotation == 0 || this.rotation == 3) {
+  //     return false;
+  //   }
+  //   else if (this.rotation == 1 || this.rotation == 2) {
+  //     return true;
+  //   }
+  // }
 
-  // if there is a path from the right, then rotation = 0 and 3 are allowed
-  static rightAllowedFilter(value) {
-    return value == 0 || value == 3;
-  }
+  // downAllowed() {
+  //   if (this.rotation == 0 || this.rotation == 1) {
+  //     return false;
+  //   }
+  //   else if (this.rotation == 2 || this.rotation == 3) {
+  //     return true;
+  //   }
+  // }
 
-  static downAllowedFilter(value) {
-    return value == 0 || value == 1;
-  }
+  // // if there is a path from the right, then rotation = 0 and 3 are allowed
+  // static rightAllowedFilter(value) {
+  //   return value == 0 || value == 3;
+  // }
+
+  // static downAllowedFilter(value) {
+  //   return value == 0 || value == 1;
+  // }
 
 }

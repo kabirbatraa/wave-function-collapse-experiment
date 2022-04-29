@@ -16,25 +16,29 @@ class TileBlank {
   //   pop();
   }
 
-  rightAllowed() {
-    // if (this.rotation == 3) {
-    //   return false;
-    // }
-    // else {
-    //   return true;
-    // }
-    return false;
+  getPaths() {
+    return [];
   }
 
-  downAllowed() {
-    // if (this.rotation == 0) {
-    //   return false;
-    // }
-    // else {
-    //   return true;
-    // }
-    return false;
-  }
+  // rightAllowed() {
+  //   // if (this.rotation == 3) {
+  //   //   return false;
+  //   // }
+  //   // else {
+  //   //   return true;
+  //   // }
+  //   return false;
+  // }
+
+  // downAllowed() {
+  //   // if (this.rotation == 0) {
+  //   //   return false;
+  //   // }
+  //   // else {
+  //   //   return true;
+  //   // }
+  //   return false;
+  // }
 
 
 }
