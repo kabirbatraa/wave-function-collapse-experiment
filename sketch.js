@@ -82,12 +82,15 @@ function draw() {
 
 function generateNewTile(i, j) {
 
-  let tileTypes = [TileT, TileL];
+  let tileTypes = [TileT, TileL, TileCross];
 
   let possibleTiles = [];
 
   tileTypes.forEach((tileType) => {
     let remainingRotations = [0, 1, 2, 3];
+    if (tileType == TileCross) {
+      remainingRotations = [0];
+    }
 
     if (i > 0 && tileGrid[i-1][j] != false) {
       let previousTilePath = tileGrid[i-1][j].getPaths().includes(right);

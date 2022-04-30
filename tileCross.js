@@ -1,10 +1,11 @@
-class TileL {
+
+class TileCross {
 
   static rotationToPaths = [
-    [left, up],
-    [up, right],
-    [right, down],
-    [down, left]
+    [left, up, right, down],
+    [left, up, right, down],
+    [left, up, right, down],
+    [left, up, right, down]
   ];
 
   constructor(rotation, x, y) {
@@ -19,14 +20,14 @@ class TileL {
     rotate(this.rotation * PI/2);
     translate(-tileWidth/2, -tileWidth/2);
     // rect(0,0,tileWidth,tileWidth);
-    // fill("pink");
-    rect(0, tileWidth/3, 2*tileWidth/3, tileWidth/3);
-    rect(tileWidth/3, 0, tileWidth/3, 2*tileWidth/3);
+    // fill("cyan");
+    rect(0, tileWidth/3, tileWidth, tileWidth/3);
+    rect(tileWidth/3, 0, tileWidth/3, tileWidth);
     pop();
   }
 
   getPaths() {
-    return TileL.rotationToPaths[this.rotation];
+    return TileCross.rotationToPaths[this.rotation];
   }
 
 }

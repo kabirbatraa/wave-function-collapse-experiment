@@ -30,32 +30,4 @@ class TileT {
     return TileT.rotationToPaths[this.rotation];
   }
 
-  // rightAllowed() {
-  //   if (this.rotation == 3) {
-  //     return false;
-  //   }
-  //   else {
-  //     return true;
-  //   }
-  // }
-
-  // downAllowed() {
-  //   if (this.rotation == 0) {
-  //     return false;
-  //   }
-  //   else {
-  //     return true;
-  //   }
-  // }
-
-  // // if there is a path from the right, then any tile except rotation = 1 is allowed
-  // static rightAllowedFilter(value) {
-  //   return value != 1;
-  // }
-
-  // static downAllowedFilter(value) {
-  //   return value != 2;
-  // }
-
-
 }

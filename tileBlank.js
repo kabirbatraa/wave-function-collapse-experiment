@@ -17,25 +17,5 @@ class TileBlank {
     return [];
   }
 
-  // rightAllowed() {
-  //   // if (this.rotation == 3) {
-  //   //   return false;
-  //   // }
-  //   // else {
-  //   //   return true;
-  //   // }
-  //   return false;
-  // }
-
-  // downAllowed() {
-  //   // if (this.rotation == 0) {
-  //   //   return false;
-  //   // }
-  //   // else {
-  //   //   return true;
-  //   // }
-  //   return false;
-  // }
-
 
 }
