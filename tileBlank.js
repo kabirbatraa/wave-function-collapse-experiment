@@ -5,12 +5,12 @@ class TileBlank {
   }
 
   draw() {
-    // push();
-    // translate(this.x + tileWidth/2, this.y + tileWidth/2);
-    // translate(-tileWidth/2, -tileWidth/2);
-    // fill("green");
-    // rect(0,0,tileWidth,tileWidth);
-    // pop();
+    push();
+    translate(this.x + tileWidth/2, this.y + tileWidth/2);
+    translate(-tileWidth/2, -tileWidth/2);
+    fill("green");
+    rect(0,0,tileWidth,tileWidth);
+    pop();
   }
 
   getPaths() {
