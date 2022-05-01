@@ -1,8 +1,9 @@
 
-class TileCross {
+class TileLine {
 
   static rotationToPaths = [
-    [left, up, right, down],
+    [left, right],
+    [up, down],
   ];
 
   constructor(rotation, x, y) {
@@ -19,12 +20,12 @@ class TileCross {
     // rect(0,0,tileWidth,tileWidth);
     // fill("cyan");
     rect(0, tileWidth/3, tileWidth, tileWidth/3);
-    rect(tileWidth/3, 0, tileWidth/3, tileWidth);
+    // rect(tileWidth/3, 0, tileWidth/3, tileWidth);
     pop();
   }
 
   getPaths() {
-    return TileCross.rotationToPaths[this.rotation];
+    return TileLine.rotationToPaths[this.rotation];
   }
 
 }

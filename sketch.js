@@ -22,7 +22,7 @@ let r=255, b=255, g=255;
 function setup() {
   createCanvas(windowWidth, windowHeight);
 
-  // randomSeed(234255);
+  // randomSeed(0);
 
   noStroke();
   fill(0);
@@ -48,10 +48,17 @@ function setup() {
 function draw() {
   // background("black");
   background(r, g, b);
-  
+
   if (queue.length > 0) {
-    // pair = queue.splice(floor(random(queue.length)), 1);
-    pair = queue.splice(0, 1);
+
+
+
+    pair = queue.splice(floor(random(queue.length)), 1);
+    // pair = queue.splice(0, 1);
+
+
+
+
     [col, row] = pair[0]; // splice returns an array of elements
     
     tileGrid[col][row] = generateNewTile(col, row);
@@ -82,14 +89,18 @@ function draw() {
 
 function generateNewTile(i, j) {
 
-  let tileTypes = [TileT, TileL, TileCross];
+  let tileTypes = [TileT, TileL, TileCross, TileLine, TileBlank];
+  // let tileTypes = [TileT, TileBlank];
 
   let possibleTiles = [];
 
   tileTypes.forEach((tileType) => {
     let remainingRotations = [0, 1, 2, 3];
-    if (tileType == TileCross) {
+    if (tileType == TileCross || tileType == TileBlank) {
       remainingRotations = [0];
+    }
+    else if (tileType == TileLine) {
+      remainingRotations = [0, 1];
     }
 
     if (i > 0 && tileGrid[i-1][j] != false) {
@@ -131,7 +142,7 @@ function generateNewTile(i, j) {
   });
 
   if (possibleTiles.length == 0) {
-    return new TileBlank(i*tileWidth, j*tileWidth);
+    return new TileBlank(0, i*tileWidth, j*tileWidth);
   }
   else {
     return possibleTiles[floor(random(possibleTiles.length))];
