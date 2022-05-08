@@ -46,6 +46,7 @@ function setup() {
 }
 
 function draw() {
+  
   // background("black");
   background(r, g, b);
 
@@ -53,8 +54,8 @@ function draw() {
 
 
 
-    pair = queue.splice(floor(random(queue.length)), 1);
-    // pair = queue.splice(0, 1);
+    // pair = queue.splice(floor(random(queue.length)), 1);
+    pair = queue.splice(0, 1);
 
 
 

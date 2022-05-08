@@ -18,7 +18,7 @@ class TileLine {
     rotate(this.rotation * PI/2);
     translate(-tileWidth/2, -tileWidth/2);
     // rect(0,0,tileWidth,tileWidth);
-    // fill("cyan");
+    fill("lavender");
     rect(0, tileWidth/3, tileWidth, tileWidth/3);
     // rect(tileWidth/3, 0, tileWidth/3, tileWidth);
     pop();
