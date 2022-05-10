@@ -17,7 +17,7 @@ let dy = [0, 1, 0, -1];
 
 let queue = [];
 
-let r=255, b=255, g=255;
+let r=123, g=113, b=180;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);

@@ -17,7 +17,7 @@ class TileCross {
     rotate(this.rotation * PI/2);
     translate(-tileWidth/2, -tileWidth/2);
     // rect(0,0,tileWidth,tileWidth);
-    fill("lightgreen");
+    fill("#98fb98");
     rect(0, tileWidth/3, tileWidth, tileWidth/3);
     rect(tileWidth/3, 0, tileWidth/3, tileWidth);
     pop();
